@@ -1,0 +1,9 @@
+options -multiviews
+options -indexes
+
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteRule ^includes/.+\.(json|php)$           404
+   RewriteRule ^generate/([a-z0-9\-]{1,100})$      generate.php?slug=$1&%{QUERY_STRING}
+   RewriteRule ^generate/([a-z0-9\-]{1,100})/ajax$ ajax.php?slug=$1&%{QUERY_STRING}
+</IfModule>
